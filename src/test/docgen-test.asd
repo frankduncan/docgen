@@ -1,7 +1,8 @@
 ; For why this is the way it is, see src/main/style-checker.asd
 (asdf:defsystem docgen-test.internal
   :components ((:file "package")
-               (:file "main")))
+               (:file "main")
+               (:file "failures")))
 
 (asdf:defsystem docgen-test
   :name "Document Generator Tests"
