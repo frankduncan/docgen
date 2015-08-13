@@ -37,3 +37,17 @@
   (first ast)
   (second ast)
   (cddr ast)))
+
+(defun ast->category-name (ast)
+ (case (first ast)
+  (:condition "condition")
+  (t "structure")))
+
+(defun ast->short-name (ast)
+ (format nil "~(~A~)" (second ast)))
+
+(defun ast->link (ast)
+ (format nil "~(~A-~A~)" (first ast) (second ast)))
+
+(defun ast->short-desc (ast)
+ (third ast))

@@ -4,6 +4,18 @@ This defines a simple successful package.
 
 This is should all get pulled in and the markdown.md should be equal to success1.md.
 
+## Contents
+
+* **function [func-that-does-stuff](#function-func-that-does-stuff)** - _func-that-does-stuff_ runs all the things against a file and returns as soon as the first func error is found.
+* **function [has-keywords](#function-has-keywords)** - _has-keywords_ runs all the things against a file and returns as soon as the first func error is found.
+* **function [has-no-examples](#function-has-no-examples)** - _has-no-examples_ runs all the things against a file and returns as soon as the first func error is found.
+* **function [has-optional](#function-has-optional)** - _has-optional_ runs all the things against a file and returns as soon as the first func error is found.
+* **function [has-rest](#function-has-rest)** - _has-rest_ runs all the things against a file and returns as soon as the first func error is found.
+* **function [noargs](#function-noargs)** - _noargs_ runs all the things against a file and returns as soon as the first func error is found.
+* **function [result-list](#function-result-list)** - _result-list_ runs all the things against a file and returns as soon as the first func error is found.
+* **condition [test-condition](#condition-test-condition)** - Simple documentation.
+* **function [values-result](#function-values-result)** - _values-result_ runs all the things against a file and returns as soon as the first func error is found.
+
 ## Function **FUNC-THAT-DOES-STUFF**
 
 #### Syntax:
@@ -160,7 +172,7 @@ _msg_---a string containing the failure message
 
 #### Description:
 
-NOARGS runs all the things against a file and returns as soon as the first func error is found.
+_result-list_ runs all the things against a file and returns as soon as the first func error is found.
 
 ## Condition TEST-CONDITION
 

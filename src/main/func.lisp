@@ -328,3 +328,16 @@
    (format-args-and-values (get-section :arguments-and-values))
    (format-description (get-section :description))
    (format-examples (get-section :examples)))))
+
+(defun ast->category-name (ast)
+ (declare (ignore ast))
+ "function")
+
+(defun ast->short-name (ast)
+ (format nil "~(~A~)" (second (find :function ast :key #'car))))
+
+(defun ast->link (ast)
+ (format nil "function-~(~A~)" (second (find :function ast :key #'car))))
+
+(defun ast->short-desc (ast)
+ (format-text (car (cadr (find :description ast :key #'car)))))

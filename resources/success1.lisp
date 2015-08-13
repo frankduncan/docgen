@@ -58,7 +58,7 @@ ARGUMENTS AND VALUES:
 
 DESCRIPTION:
 
-  NOARGS runs all the things against a file and returns
+  RESULT-LIST runs all the things against a file and returns
   as soon as the first func error is found."
   nil)
 
