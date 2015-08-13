@@ -1,3 +1,9 @@
+# Package SUCCESS1
+
+This defines a simple successful package.
+
+This is should all get pulled in and the markdown.md should be equal to success1.md.
+
 ## Function **FUNC-THAT-DOES-STUFF**
 
 #### Syntax:

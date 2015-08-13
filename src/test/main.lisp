@@ -27,8 +27,14 @@
  `(deftest
    ,source
    (lambda ()
-    (load ,source)
-    (ignore-errors (string= (slurp-file ,target) (docgen:export-package ,pkg))))))
+    (handler-case
+     (progn
+      (load ,source)
+      (string= (slurp-file ,target) (docgen:export-package ,pkg)))
+     (docgen:validation-failure (vf)
+      (format t "Error gotten: ~A~%"
+       (funcall (symbol-function (find-symbol "VALIDATION-FAILURE-MSG" :docgen)) vf)))
+     (error (e) (format t "Error gotten: ~A~%" e))))))
 
 (defmacro deffailure-func-test (name doc expected)
  `(deftest

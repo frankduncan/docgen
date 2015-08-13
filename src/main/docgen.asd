@@ -8,7 +8,7 @@
 ; There's probably a better way, but I don't know it
 (asdf:defsystem docgen.internal
  :serial t
- :components ((:file "package") (:file "func") (:file "docgen")))
+ :components ((:file "package") (:file "func") (:file "pkg") (:file "docgen")))
 
 (asdf:defsystem docgen
  :name "Documentation Generator"
