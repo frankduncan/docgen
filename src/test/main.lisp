@@ -16,7 +16,10 @@
  `(push
    (lambda ()
     (let
-     ((success (funcall ,f)))
+     ((success
+       (handler-case
+        (funcall ,f)
+        (error (e) (format t "Got unexpected error in tests: ~A" e)))))
      (if success
       (format t "~c[1;32m- ~A passed~c[0m~%" #\Esc ,name #\Esc)
       (format t "~c[1;31m- ~A failed~c[0m~%" #\Esc ,name #\Esc))
@@ -32,9 +35,20 @@
       (load ,source)
       (string= (slurp-file ,target) (docgen:export-package ,pkg)))
      (docgen:validation-failure (vf)
-      (format t "Error gotten: ~A~%"
-       (funcall (symbol-function (find-symbol "VALIDATION-FAILURE-MSG" :docgen)) vf)))
-     (error (e) (format t "Error gotten: ~A~%" e))))))
+      (format t "Validation failure gotten: ~A~%"
+       (funcall (symbol-function (find-symbol "VALIDATION-FAILURE-MSG" :docgen)) vf)))))))
+
+(defmacro deffailuretest (pkg source expected)
+ `(deftest
+   ,source
+   (lambda ()
+    (progn
+     (load ,source)
+     (let
+      ((result (docgen:validate-package ,pkg)))
+      (or
+       (equal ,expected result)
+       (format t "  Got error:~%~S~%  but expected~%~S~%" result ,expected)))))))
 
 (defmacro deffailure-func-test (name doc expected)
  `(deftest
@@ -55,3 +69,6 @@
         (format t "  Got error:~%~S~%  but expected~%~S~%" result ,expected))))))))
 
 (defsuccesstest :success1 "resources/success1.lisp" "resources/success1.md")
+(deffailuretest :emptydocs "resources/emptydocs.lisp"
+ '((:failure "Package EMPTYDOCS has no documentation")
+   (:failure "Symbol NO-DOC-FUNC has no documentation")))

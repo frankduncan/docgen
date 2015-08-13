@@ -3,6 +3,7 @@
 (defun fire-error (msg) (error (make-instance 'docgen:validation-failure :msg msg)))
 
 (defun doc->ast (pkg)
+ (when (not (documentation pkg t)) (fire-error (format nil "Package ~A has no documentation" (package-name pkg))))
  (labels
   ((validate (strs)
     (mapcar
