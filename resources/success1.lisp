@@ -5,10 +5,17 @@
 This is should all get pulled in and the markdown.md should be equal
 to success1.md.")
  (:export
+  #:test-condition
   #:func-that-does-stuff #:noargs #:result-list #:has-no-examples
   #:values-result #:has-optional #:has-keywords #:has-rest))
 
 (in-package #:success1)
+
+(define-condition test-condition nil nil
+ (:documentation
+  "Simple documentation.
+
+For a simple condition."))
 
 (defun func-that-does-stuff (path x)
  "FUNC-THAT-DOES-STUFF PATH X => RESULT

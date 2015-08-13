@@ -162,6 +162,12 @@ _msg_---a string containing the failure message
 
 NOARGS runs all the things against a file and returns as soon as the first func error is found.
 
+## Condition TEST-CONDITION
+
+Simple documentation.
+
+For a simple condition.
+
 ## Function **VALUES-RESULT**
 
 #### Syntax:

@@ -71,4 +71,5 @@
 (defsuccesstest :success1 "resources/success1.lisp" "resources/success1.md")
 (deffailuretest :emptydocs "resources/emptydocs.lisp"
  '((:failure "Package EMPTYDOCS has no documentation")
+   (:failure "Symbol NO-DOC-CONDITION has no documentation")
    (:failure "Symbol NO-DOC-FUNC has no documentation")))

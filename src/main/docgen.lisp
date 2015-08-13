@@ -5,7 +5,7 @@
 (defun get-symb-type (symb)
  (cond
   ;((documentation symb 'variable) :variable)
-  ;((documentation symb 'structure) :structure)
+  ((documentation symb 'structure) :structure)
   ((documentation symb 'function) :function)))
 
 (defun validate-package (pkg)
@@ -26,6 +26,7 @@
        (with-success-check
         (case (get-symb-type symb)
          (:function (docgen-func:doc->ast symb))
+         (:structure (docgen-struc:doc->ast symb))
          (t (error (make-condition 'validation-failure :msg (format nil "Symbol ~A has no documentation" symb)))))))
       symbs))))))
 
@@ -51,6 +52,8 @@
    (format str "~{~A~^~%~}"
     (mapcar
      (lambda (symb)
+      (format t "HAHAHAH ~A ~A~%" symb (get-symb-type symb))
       (case (get-symb-type symb)
-       (:function (docgen-func:ast->md (docgen-func:doc->ast symb)))))
+       (:function (docgen-func:ast->md (docgen-func:doc->ast symb)))
+       (:structure (docgen-struc:ast->md (docgen-struc:doc->ast symb)))))
      symbs)))))
