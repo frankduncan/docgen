@@ -1,1 +1,0 @@
-../src/test/docgen-test.asd

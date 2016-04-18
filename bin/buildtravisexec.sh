@@ -23,6 +23,7 @@ SBCL_HOME="" tmp/sbcl/bin/sbcl --core tmp/sbcl/lib/sbcl/sbcl.core --no-sysinit -
   --eval '(setf asdf:*central-registry* (list #p"tmp/deps/"))' \
   --eval "(asdf:load-system :cl-ppcre)" \
   --eval "(asdf:load-system :style-checker)" \
+  --eval "(push :travis *features*)" \
   --eval "(asdf:clear-output-translations)" \
   --eval '(sb-ext:save-lisp-and-die "travissbcl" :executable t)' \
 
@@ -30,7 +31,7 @@ chmod +x travissbcl
 travisname=travissbcl-$(git rev-parse --short HEAD)
 mv travissbcl $travisname
 
-echo "You should upload via the command: scp $travisname nami:/opt/travis/sbcls/docgen/"
+echo "You should upload via the command: scp $travisname nami:/var/travis/sbcls/docgen/"
 echo "You should also set travisname in .travis.yml to $travisname"
 
 rm -rf tmp

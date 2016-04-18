@@ -1,8 +1,9 @@
 (setf *compile-print* nil)
 (require 'asdf)
-(setf asdf:*central-registry* (list #p"deps/"))
-(asdf:load-system :docgen.internal)
-(asdf:load-system :docgen-test.internal)
+(asdf:initialize-source-registry `(:source-registry (:tree ,(car (directory "src"))) :INHERIT-CONFIGURATION))
+(asdf:load-system :docgen)
+(asdf:load-system :docgen-test)
+#-travis (asdf:load-system :style-checker)
 
 (format t "~%~c[1;33mRunning Tests~c[0m~%" #\Esc #\Esc)
 (when (not (docgen-test:run-all-tests))
