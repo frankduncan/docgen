@@ -72,7 +72,7 @@ DESCRIPTION:
 EXAMPLES:
 
   (pretty-print-validate-packages :pkg1 :pkg2) => t"
- (some
+ (every
   #'identity
   (mapcar
    (lambda (pkg)
