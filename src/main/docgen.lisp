@@ -5,7 +5,7 @@
 
 (defun get-symb-type (symb)
  (cond
-  ;((documentation symb 'variable) :variable)
+  ((documentation symb 'variable) :variable)
   ((documentation symb 'structure) :structure)
   ((documentation symb 'function) :function)))
 
@@ -47,6 +47,7 @@ DESCRIPTION:
         (case (get-symb-type symb)
          (:function (docgen-func:doc->ast symb))
          (:structure (docgen-struc:doc->ast symb))
+         (:variable (docgen-var:doc->ast symb))
          (t (error (make-condition 'validation-failure :msg (format nil "Symbol ~A has no documentation" symb)))))))
       symbs))))))
 
@@ -105,7 +106,13 @@ EXAMPLES:
         (docgen-struc:ast->category-name (docgen-struc:doc->ast symb))
         (docgen-struc:ast->short-name (docgen-struc:doc->ast symb))
         (docgen-struc:ast->link (docgen-struc:doc->ast symb))
-        (docgen-struc:ast->short-desc (docgen-struc:doc->ast symb))))))
+        (docgen-struc:ast->short-desc (docgen-struc:doc->ast symb))))
+      (:variable
+       (list
+        (docgen-var:ast->category-name (docgen-var:doc->ast symb))
+        (docgen-var:ast->short-name (docgen-var:doc->ast symb))
+        (docgen-var:ast->link (docgen-var:doc->ast symb))
+        (docgen-var:ast->short-desc (docgen-var:doc->ast symb))))))
     symbs))))
 
 (defun export-package (pkg)
@@ -134,6 +141,7 @@ DESCRIPTION:
     (mapcar
      (lambda (symb)
       (case (get-symb-type symb)
+       (:variable (docgen-var:ast->md (docgen-var:doc->ast symb)))
        (:function (docgen-func:ast->md (docgen-func:doc->ast symb)))
        (:structure (docgen-struc:ast->md (docgen-struc:doc->ast symb)))))
      symbs)))))

@@ -4,7 +4,7 @@ Enforcement of documentation guidelines for my Common Lisp Projects, as well as 
 
 I wish I had aspirations for this being some standard that someone else might follow, but realistically I'm just irritated at my own laziness with regard to documentation, so I wrote a solution.  The forceful nature of the validator is really just because I didn't want to write a smarter parser.  As an added bonus, all the docs now look the same when I look at them in the repl, so that's kind of nice.
 
-If you like, you can [download it](https://github.com/frankduncan/docgen/releases/download/0.1/docgen_0.1.tar.gz)
+If you like, you can [download it](https://github.com/frankduncan/docgen/releases/download/0.2/docgen_0.2.tar.gz)
 
 ## Usage
 
@@ -18,7 +18,36 @@ Packages are documented by sections broken up by one empty line, with the first 
 
 ## Structure/Condition documentation
 
-Requirements are the same as the package
+Requirements are the same as the package documentation.
+
+## Variable documentation
+
+Variables should follow the template:
+
+```
+*VARIABLE*
+
+VALUE TYPE:
+
+  a generalized boolean
+
+INITIAL VALUE:
+
+  NIL
+
+DESCRIPTION:
+
+  *VARIABLE* is expected to be a boolean, but
+  most anything can be it.
+
+EXAMPLES:
+
+  (let ((*variable* t)) (go)) => let-it-go
+````
+
+There are three required sections and one optional section.  ```VALUE TYPE```, ```INITIAL VALUE```, and ```DESCRIPTION``` are freeform, with the ```EXAMPLES``` section following the same rules as below in the function documentation.
+
+### 
 
 ## Function documentation
 

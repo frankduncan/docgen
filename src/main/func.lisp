@@ -161,10 +161,10 @@
         (text-item)
         (cond
          ((not (stringp text-item)) (list text-item))
-         ((not (cl-ppcre:scan (car remaining-keywords) text-item)) (list text-item))
+         ((not (cl-ppcre:scan (cl-ppcre:quote-meta-chars (car remaining-keywords)) text-item)) (list text-item))
          (t
           (let
-           ((split-text (cl-ppcre:split (car remaining-keywords) text-item :limit 1000)))
+           ((split-text (cl-ppcre:split (cl-ppcre:quote-meta-chars (car remaining-keywords)) text-item :limit 1000)))
            (apply #'append
             (list (car split-text))
             (mapcar (lambda (ti) (list (list :keyword (car remaining-keywords)) ti)) (cdr split-text)))))))

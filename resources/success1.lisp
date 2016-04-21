@@ -5,11 +5,34 @@
 This is should all get pulled in and the markdown.md should be equal
 to success1.md.")
  (:export
+  #:*special-variable*
   #:test-condition
   #:func-that-does-stuff #:noargs #:result-list #:has-no-examples
   #:values-result #:has-optional #:has-keywords #:has-rest))
 
 (in-package #:success1)
+
+(defvar *special-variable* nil
+ "*SPECIAL-VARIABLE*
+
+VALUE TYPE:
+
+  a generalized boolean
+
+INITIAL VALUE:
+
+  NIL
+
+DESCRIPTION:
+
+  It is special, and a boolean.
+
+  When true, it satisfies if coniditions.  When NIL, it does not.
+  That may make it seem like it's not very special, but it is.
+
+EXAMPLES:
+
+  (let ((*special-variable* t)) (go)) => 'let-it-go")
 
 (define-condition test-condition nil nil
  (:documentation

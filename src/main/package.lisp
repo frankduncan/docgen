@@ -9,6 +9,9 @@ looking decent when used within a common lisp process."))
 (defpackage #:docgen-func (:use :cl)
  (:export #:doc->ast #:ast->md #:ast->link #:ast->short-name #:ast->short-desc #:ast->category-name))
 
+(defpackage #:docgen-var (:use :cl)
+ (:export #:doc->ast #:ast->md #:ast->link #:ast->short-name #:ast->short-desc #:ast->category-name))
+
 (defpackage #:docgen-pkg (:use :cl)
  (:export #:doc->ast #:ast->md))
 

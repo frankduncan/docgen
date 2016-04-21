@@ -52,13 +52,31 @@
 
 (defmacro deffailure-func-test (name doc expected)
  `(deftest
-   ,name
+   ,(format nil "Func - ~A" name)
    (lambda ()
     (handler-case
      (progn
       (funcall
        (symbol-function (find-symbol "INTERNAL-DOC->AST" :docgen-func))
        'unused
+       ,doc)
+      nil)
+     (docgen:validation-failure (vf)
+      (let
+       ((result (funcall (symbol-function (find-symbol "VALIDATION-FAILURE-MSG" :docgen)) vf)))
+       (or
+        (string= ,expected result)
+        (format t "  Got error:~%~S~%  but expected~%~S~%" result ,expected))))))))
+
+(defmacro deffailure-var-test (name doc expected)
+ `(deftest
+   ,(format nil "Var - ~A" name)
+   (lambda ()
+    (handler-case
+     (progn
+      (funcall
+       (symbol-function (find-symbol "INTERNAL-DOC->AST" :docgen-var))
+       '*unused*
        ,doc)
       nil)
      (docgen:validation-failure (vf)

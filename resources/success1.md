@@ -6,6 +6,7 @@ This is should all get pulled in and the markdown.md should be equal to success1
 
 ## Contents
 
+* **variable [\*special\-variable\*](#variable-special-variable)** - It is special, and a boolean.
 * **function [func-that-does-stuff](#function-func-that-does-stuff)** - _func-that-does-stuff_ runs all the things against a file and returns as soon as the first func error is found.
 * **function [has-keywords](#function-has-keywords)** - _has-keywords_ runs all the things against a file and returns as soon as the first func error is found.
 * **function [has-no-examples](#function-has-no-examples)** - _has-no-examples_ runs all the things against a file and returns as soon as the first func error is found.
@@ -15,6 +16,26 @@ This is should all get pulled in and the markdown.md should be equal to success1
 * **function [result-list](#function-result-list)** - _result-list_ runs all the things against a file and returns as soon as the first func error is found.
 * **condition [test-condition](#condition-test-condition)** - Simple documentation.
 * **function [values-result](#function-values-result)** - _values-result_ runs all the things against a file and returns as soon as the first func error is found.
+
+## Variable \*SPECIAL\-VARIABLE\*
+
+#### Value Type:
+
+a generalized boolean
+
+#### Initial Value:
+
+NIL
+
+#### Description:
+
+It is special, and a boolean.
+
+When true, it satisfies if coniditions.  When NIL, it does not. That may make it seem like it's not very special, but it is.
+
+#### Examples:
+
+```(let ((*special-variable* t)) (go))``` => ```'let-it-go```  
 
 ## Function **FUNC-THAT-DOES-STUFF**
 
