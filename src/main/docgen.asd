@@ -1,6 +1,6 @@
 (asdf:defsystem docgen
  :name "Documentation Generator"
- :version "0.2"
+ :version "0.3"
  :maintainer "Frank Duncan (frank@kank.com)"
  :author "Frank Duncan (frank@kank.com)"
  :serial t

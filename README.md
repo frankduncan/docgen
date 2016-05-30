@@ -4,7 +4,7 @@ Enforcement of documentation guidelines for my Common Lisp Projects, as well as 
 
 I wish I had aspirations for this being some standard that someone else might follow, but realistically I'm just irritated at my own laziness with regard to documentation, so I wrote a solution.  The forceful nature of the validator is really just because I didn't want to write a smarter parser.  As an added bonus, all the docs now look the same when I look at them in the repl, so that's kind of nice.
 
-If you like, you can [download it](https://github.com/frankduncan/docgen/releases/download/0.2/docgen_0.2.tar.gz)
+If you like, you can [download it](https://github.com/frankduncan/docgen/releases/download/0.3/docgen_0.3.tar.gz)
 
 ## Usage
 

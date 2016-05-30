@@ -7,7 +7,7 @@ to success1.md.")
  (:export
   #:*special-variable*
   #:test-condition
-  #:func-that-does-stuff #:noargs #:result-list #:has-no-examples
+  #:func-that-does-stuff #:noargs #:no-args-and-values #:result-list #:has-no-examples
   #:values-result #:has-optional #:has-keywords #:has-rest))
 
 (in-package #:success1)
@@ -106,6 +106,17 @@ EXAMPLES:
 
   (func-that-does-stuff) => (:success \"path/to/file.lisp\")
   (func-that-does-stuff) => (:failure \"path/to/error.lisp\" \"Error msg\" 20 0)"
+  nil)
+
+(defun no-args-and-values ()
+ "NO-ARGS-AND-VALUES => RESULT
+
+  RESULT: :nothing
+
+DESCRIPTION:
+
+  RESULT-LIST runs all the things against a file and returns
+  as soon as the first func error is found."
   nil)
 
 (defun has-no-examples ()

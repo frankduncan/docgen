@@ -12,6 +12,7 @@ This is should all get pulled in and the markdown.md should be equal to success1
 * **function [has-no-examples](#function-has-no-examples)** - _has-no-examples_ runs all the things against a file and returns as soon as the first func error is found.
 * **function [has-optional](#function-has-optional)** - _has-optional_ runs all the things against a file and returns as soon as the first func error is found.
 * **function [has-rest](#function-has-rest)** - _has-rest_ runs all the things against a file and returns as soon as the first func error is found.
+* **function [no-args-and-values](#function-no-args-and-values)** - _result_-LIST runs all the things against a file and returns as soon as the first func error is found.
 * **function [noargs](#function-noargs)** - _noargs_ runs all the things against a file and returns as soon as the first func error is found.
 * **function [result-list](#function-result-list)** - _result-list_ runs all the things against a file and returns as soon as the first func error is found.
 * **condition [test-condition](#condition-test-condition)** - Simple documentation.
@@ -152,6 +153,18 @@ _msg_---a string containing the failure message
 _has-rest_ runs all the things against a file and returns as soon as the first func error is found.
 
 This second section uses _path_ and _x_ as something we should talk about, but doesn't use all the arguments (let's include _path_ here for fun)
+
+## Function **NO-ARGS-AND-VALUES**
+
+#### Syntax:
+
+**no-args-and-values** => _result_
+
+```result::= :nothing```  
+
+#### Description:
+
+_result_-LIST runs all the things against a file and returns as soon as the first func error is found.
 
 ## Function **NOARGS**
 

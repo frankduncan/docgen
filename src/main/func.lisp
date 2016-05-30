@@ -259,7 +259,7 @@
      (append
       (when types (list types))
       (list
-       (parse-arguments-and-values args-to-be-defined)
+       (when args-to-be-defined (parse-arguments-and-values args-to-be-defined))
        (parse-description))
       (when (more) (list (parse-examples)))))))))
 
@@ -294,7 +294,8 @@
     (case (car type)
      (:list (format nil "(~{~(~A~)~^ ~})" (mapcar #'cadr (cadr type))))
      (:or (format nil "~{~(~A~)~^ | ~}" (mapcar #'cadr (cadr type))))
-     (:asterisk (format nil "~(~A~)*" (cadr (car (cadr type))))))))
+     (:asterisk (format nil "~(~A~)*" (cadr (car (cadr type)))))
+     (:symbol (format nil "~(~A~)" (cadr (car (cadr type))))))))
   (if (not types)
    ""
    (format nil "~{~A~%~}~%"
@@ -325,7 +326,10 @@
   (format nil "~A~A~A~A~A"
    (format-header (get-section :function))
    (format-types (get-section :types))
-   (format-args-and-values (get-section :arguments-and-values))
+   (if
+    (get-section :arguments-and-values)
+    (format-args-and-values (get-section :arguments-and-values))
+    "")
    (format-description (get-section :description))
    (format-examples (get-section :examples)))))
 
