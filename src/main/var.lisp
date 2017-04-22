@@ -33,7 +33,7 @@
   (cond
    ((and next-optional (not next-line)) (list ""))
    ((and (string= "" next-line) (not (more))) (fire-error "Can't end with empty line"))
-   ((cl-ppcre:scan "^  [^ ].+" next-line)
+   ((cl-ppcre:scan "^  [^ ]+" next-line)
     (let
      ((rest-of-freeform (freeform->paragraphs next next-optional)))
      (cons
